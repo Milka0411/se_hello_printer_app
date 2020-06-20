@@ -8,3 +8,7 @@ script:
   - make lint
   - make docker_build
   - make docker_push
+deploy:
+ provider: heroku
+ app: dry-oasis-08559
+ api_key: ${HEROKU_API_KEY}
