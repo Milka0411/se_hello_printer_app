@@ -6,7 +6,12 @@ pipeline {
               sh 'make deps'
           }
         }
-        stage("test") {
+        stage('Linter') {
+           steps {
+              sh 'make lint'
+           }
+        }
+        stage('Test') {
            steps {
              sh 'make test_xunit || true'
              xunit thresholds: [
@@ -21,6 +26,6 @@ pipeline {
              stopProcessingIfError: true)
              ]
             }
-          }
+        }
     }
 }
